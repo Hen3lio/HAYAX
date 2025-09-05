@@ -1,0 +1,286 @@
+(cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF'
+diff --git a/index.html b/index.html
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1,279 @@
++<!DOCTYPE html>
++<html lang="fr">
++  <head>
++    <meta charset="utf-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1" />
++    <meta name="theme-color" content="#e7d6c2" />
++    <meta name="description" content="Portfolio — créatif, modérateur, graphiste, réalisateur d'outils." />
++    <title>IMYA — Portfolio</title>
++
++    <!-- Fonts -->
++    <link rel="preconnect" href="https://fonts.googleapis.com" />
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
++    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
++
++    <!-- Icons -->
++    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" />
++
++    <link rel="stylesheet" href="./styles.css" />
++    <script defer src="./script.js"></script>
++  </head>
++  <body>
++    <a class="skip-link" href="#contenu">Aller au contenu</a>
++
++    <div class="backdrop" aria-hidden="true"></div>
++    <header class="site-header">
++      <div class="wrap">
++        <div class="brand">
++          <span class="logo">I</span>
++          <span class="wordmark">IMYA</span>
++        </div>
++        <nav class="nav">
++          <a href="#projets">Projets</a>
++          <a href="#competences">Compétences</a>
++          <a href="#liens">Liens</a>
++          <button class="btn ghost" id="themeToggle" aria-label="Basculer le thème">
++            <i class="ti ti-sun"></i>
++          </button>
++        </nav>
++      </div>
++    </header>
++
++    <main id="contenu" class="wrap layout">
++      <!-- Colonne principale -->
++      <section class="col main">
++        <!-- Hero Card -->
++        <article class="card hero reveal" data-tilt>
++          <div class="hero-top">
++            <h1 class="display">IMYA</h1>
++            <p class="subtitle">18 ans — écrivain & designer graphique, modérateur, esprit d'équipe.</p>
++            <div class="hero-actions">
++              <a class="btn primary" href="mailto:contact@example.com"><i class="ti ti-mail"></i> Email</a>
++              <a class="btn soft" href="#projets"><i class="ti ti-chevron-down"></i> Faire défiler</a>
++            </div>
++          </div>
++          <div class="hero-meta">
++            <div class="chip online"><span class="dot"></span> En ligne</div>
++            <div class="meta-text">
++              <div><strong>Activité</strong> Création artistique</div>
++              <div><strong>Actuellement</strong> Rédaction d'une belle histoire</div>
++            </div>
++          </div>
++        </article>
++
++        <!-- Projets -->
++        <h2 id="projets" class="section-title">MES PROJETS</h2>
++
++        <article class="card project highlight reveal" data-tilt>
++          <div class="project-header">
++            <div class="project-icon">
++              <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Logo projet" />
++            </div>
++            <div>
++              <h3 class="project-title">Hayax</h3>
++              <div class="tags">
++                <span class="tag">Multifonction</span>
++                <span class="tag">Multilingue</span>
++                <span class="tag">Modération</span>
++                <span class="tag">Utilitaire</span>
++              </div>
++            </div>
++            <div class="project-cta">
++              <a class="btn primary" href="#"><i class="ti ti-plus"></i> Ajouter le bot</a>
++            </div>
++          </div>
++          <p class="project-desc">
++            Hayax est un bot polyvalent pour les grands serveurs, combinant modération, musique, intégrations et automations intelligentes.
++          </p>
++          <div class="project-meta">
++            <span class="chip soft">Mis en avant</span>
++          </div>
++        </article>
++
++        <div class="project-grid">
++          <article class="card project reveal" data-tilt>
++            <div class="project-header">
++              <img class="cover" src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=1200&auto=format&fit=crop" alt="Under the Masks visuel" />
++              <div>
++                <h3 class="project-title">Under the Masks</h3>
++                <div class="tags">
++                  <span class="tag">Français</span>
++                  <span class="tag">Romance</span>
++                  <span class="tag">YA</span>
++                </div>
++              </div>
++              <span class="chip soft">En écriture</span>
++            </div>
++            <p class="project-desc">
++              Un roman sur Akari, 18 ans, entre solitude et lumière — jusqu'à sa rencontre avec Manaë, un garçon doux et déterminé.
++            </p>
++            <div class="project-cta">
++              <a class="btn soft" href="#"><i class="ti ti-book-2"></i> Lire sur Wattpad</a>
++            </div>
++          </article>
++
++          <article class="card project reveal" data-tilt>
++            <div class="project-header">
++              <div class="project-icon small">
++                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" alt="SynapseLogic visuel" />
++              </div>
++              <div>
++                <h3 class="project-title">SynapseLogic</h3>
++                <div class="tags">
++                  <span class="tag">Anti-raid</span>
++                  <span class="tag">Tickets</span>
++                </div>
++              </div>
++              <span class="chip danger">Arrêté</span>
++            </div>
++            <p class="project-desc">
++              Outil de protection anti-raid et gestion de tickets pour serveurs Discord — simple, rapide, résilient.
++            </p>
++            <div class="project-cta">
++              <a class="btn ghost" href="#"><i class="ti ti-external-link"></i> Voir le projet</a>
++            </div>
++          </article>
++        </div>
++
++        <!-- Menu projets -->
++        <section class="card list reveal" aria-labelledby="menu-projets" data-tilt>
++          <h3 id="menu-projets">Menu projets</h3>
++          <details class="list-item" open>
++            <summary>En cours</summary>
++            <ul>
++              <li>Refonte de l'identité visuelle d'Hayax</li>
++              <li>Storyboard de la saison 1 d'Under the Masks</li>
++            </ul>
++          </details>
++          <details class="list-item">
++            <summary>Développeur pour</summary>
++            <ul>
++              <li>Haunt.gg</li>
++              <li>Guns.lol</li>
++            </ul>
++          </details>
++          <details class="list-item">
++            <summary>Projets passés</summary>
++            <ul>
++              <li>Bot d'onboarding Discord</li>
++              <li>Pack d'assets graphiques club e-sport</li>
++            </ul>
++          </details>
++        </section>
++      </section>
++
++      <!-- Colonne latérale -->
++      <aside class="col side">
++        <article class="card profile reveal" data-tilt>
++          <div class="profile-row">
++            <img class="avatar" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=400&auto=format&fit=crop" alt="Avatar" />
++            <div class="profile-meta">
++              <h3>imya</h3>
++              <div class="chip online"><span class="dot"></span> En ligne</div>
++            </div>
++          </div>
++          <div class="profile-activity">
++            <div class="muted">Activité</div>
++            <div>Création d'arts</div>
++            <div class="muted">Écrit une belle histoire.</div>
++          </div>
++        </article>
++
++        <article class="card muted reveal" data-tilt>
++          <h3>Indisponible</h3>
++          <p>Présence indisponible pour le moment.</p>
++        </article>
++
++        <article id="liens" class="card links reveal" data-tilt>
++          <h3>Liens</h3>
++          <ul>
++            <li><a href="#">Haunt.gg</a></li>
++            <li><a href="#">Guns.lol</a></li>
++            <li><a href="#">Site Hayax</a></li>
++            <li><a href="#">Behance</a></li>
++          </ul>
++        </article>
++
++        <article id="competences" class="card skills reveal" data-tilt>
++          <h3>Compétences</h3>
++          <div class="skill">
++            <div class="label">Design graphique</div>
++            <div class="bar" data-value="85"></div>
++            <div class="value">85%</div>
++          </div>
++          <div class="skill">
++            <div class="label">Code</div>
++            <div class="bar" data-value="40"></div>
++            <div class="value">40%</div>
++          </div>
++          <div class="skill">
++            <div class="label">Écriture</div>
++            <div class="bar" data-value="80"></div>
++            <div class="value">80%</div>
++          </div>
++          <div class="skill">
++            <div class="label">Modération</div>
++            <div class="bar" data-value="100"></div>
++            <div class="value">100%</div>
++          </div>
++        </article>
++
++        <article class="card languages reveal" data-tilt>
++          <h3>Langues</h3>
++          <div class="skill">
++            <div class="label">Français</div>
++            <div class="bar" data-value="100"></div>
++            <div class="value">100%</div>
++          </div>
++          <div class="skill">
++            <div class="label">Anglais</div>
++            <div class="bar" data-value="60"></div>
++            <div class="value">60%</div>
++          </div>
++          <div class="skill">
++            <div class="label">Arabe</div>
++            <div class="bar" data-value="30"></div>
++            <div class="value">En apprentissage</div>
++          </div>
++        </article>
++
++        <article class="card sw reveal" data-tilt>
++          <div class="sw-tabs" role="tablist">
++            <button class="chip soft active" data-tab="strengths" role="tab" aria-selected="true">Forces</button>
++            <button class="chip soft" data-tab="weaknesses" role="tab" aria-selected="false">Faiblesses</button>
++          </div>
++          <div class="sw-panel" id="strengths" role="tabpanel">
++            <ul>
++              <li>Direction artistique soignée</li>
++              <li>Esprit d'équipe & modération</li>
++              <li>Sens du détail</li>
++            </ul>
++          </div>
++          <div class="sw-panel hidden" id="weaknesses" role="tabpanel">
++            <ul>
++              <li>Perfectionnisme qui rallonge les délais</li>
++              <li>Besoin de temps pour cadrer un projet</li>
++            </ul>
++          </div>
++        </article>
++      </aside>
++    </main>
++
++    <footer class="site-footer wrap">
++      <div class="card foot">
++        <p>© <span id="year"></span> IMYA — Fait avec <span class="heart">♥</span> et du café. <a href="#contenu">Haut de page</a></p>
++      </div>
++    </footer>
++
++    <noscript>
++      <style>
++        .reveal { opacity: 1; transform: none }
++        .bar::after { width: attr(data-value percentage) }
++      </style>
++      JavaScript est requis pour les animations.
++    </noscript>
++  </body>
++  
++</html>
++
++
+EOF
+)
