@@ -1,0 +1,154 @@
+(cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF'
+diff --git a/styles.css b/styles.css
+--- a/styles.css
++++ b/styles.css
+@@ -0,0 +1,147 @@
++:root{
++  --bg: #f2e6d7;
++  --bg-elev: #f6ecdf;
++  --text: #3b2f25;
++  --muted: #7b695c;
++  --primary: #7c4c2e;
++  --primary-2: #c08b61;
++  --accent: #e9c6a9;
++  --chip: #e7d6c2;
++  --success: #00b894;
++  --danger: #d63031;
++  --shadow: 0 10px 30px rgba(58,46,36,.14), 0 2px 6px rgba(58,46,36,.1);
++  --radius: 18px;
++  --radius-small: 12px;
++}
++
++/* Dark theme */
++[data-theme="dark"]{
++  --bg: #0f0d0b;
++  --bg-elev: #151210;
++  --text: #efe4d6;
++  --muted: #b7a899;
++  --primary: #dfa66c;
++  --primary-2: #f1c086;
++  --accent: #2b241e;
++  --chip: #201a15;
++  --shadow: 0 12px 28px rgba(0,0,0,.45), 0 2px 6px rgba(0,0,0,.35);
++}
++
++*{ box-sizing:border-box }
++html,body{ height:100% }
++body{
++  margin:0;
++  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
++  color:var(--text);
++  background: radial-gradient(1200px 600px at 10% 0%, var(--accent) 0%, transparent 60%),
++              radial-gradient(900px 500px at 90% 10%, #f8ead7 0%, transparent 50%),
++              var(--bg);
++  line-height:1.5;
++}
++
++.wrap{ width:min(1120px, 92vw); margin:0 auto }
++.layout{ display:grid; grid-template-columns: 2fr 1fr; gap:28px; align-items:start; margin-top:96px }
++
++.site-header{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px); background:color-mix(in oklab, var(--bg) 80%, transparent); border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent) }
++.site-header .wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 0 }
++.brand{ display:flex; align-items:center; gap:10px }
++.brand .logo{ width:34px; height:34px; border-radius:12px; background:linear-gradient(135deg, var(--primary-2), var(--primary)); display:grid; place-items:center; color:white; font-weight:800 }
++.brand .wordmark{ font-family:"Bricolage Grotesque", Inter, sans-serif; font-weight:800; font-size:22px; letter-spacing:.5px }
++.nav{ display:flex; gap:10px; align-items:center }
++.nav a{ color:var(--text); text-decoration:none; padding:10px 12px; border-radius:12px; transition:.2s ease background-color }
++.nav a:hover{ background:color-mix(in oklab, var(--chip) 50%, transparent) }
++
++.backdrop{ position:fixed; inset:0; pointer-events:none; background:
++  radial-gradient(600px 300px at 20% -5%, rgba(229, 205, 180,.35), transparent 60%),
++  radial-gradient(700px 400px at 100% 0%, rgba(219, 193, 166,.28), transparent 55%);
++  z-index:-1
++}
++
++.skip-link{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden }
++.skip-link:focus{ left:12px; top:12px; width:auto; height:auto; z-index:1000; background:var(--chip); color:var(--text); padding:10px 14px; border-radius:10px }
++
++.display{ font-family:"Bricolage Grotesque", Inter, sans-serif; font-size:64px; margin:0 }
++.subtitle{ color:var(--muted); margin:12px 0 18px }
++
++.card{
++  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-elev) 88%, #fff 12%), color-mix(in oklab, var(--bg-elev) 96%, #fff 4%));
++  border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
++  border-radius: var(--radius);
++  box-shadow: var(--shadow);
++  padding: 18px 18px;
++}
++.card.muted{ opacity:.95 }
++.hero .hero-top{ padding-bottom:8px; border-bottom:1px dashed color-mix(in oklab, var(--text) 12%, transparent) }
++.hero .hero-meta{ display:flex; align-items:center; justify-content:space-between; gap:18px; padding-top:14px }
++.hero .meta-text{ display:grid; gap:4px }
++
++.btn{ display:inline-flex; gap:8px; align-items:center; padding:10px 14px; border-radius:12px; border:1px solid color-mix(in oklab, var(--text) 12%, transparent); cursor:pointer; text-decoration:none; color:var(--text); transition: transform .18s ease, background-color .2s ease, border-color .2s ease }
++.btn:hover{ transform: translateY(-2px) }
++.btn.primary{ background: linear-gradient(135deg, color-mix(in oklab, var(--primary) 86%, #fff 14%), color-mix(in oklab, var(--primary-2) 86%, #fff 14%)); color:white; border-color: color-mix(in oklab, var(--primary) 50%, transparent) }
++.btn.soft{ background: color-mix(in oklab, var(--chip) 70%, transparent) }
++.btn.ghost{ background: transparent }
++.hero-actions{ display:flex; gap:10px; flex-wrap:wrap }
++
++.chip{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:var(--chip); border:1px solid color-mix(in oklab, var(--text) 10%, transparent); color:var(--text) }
++.chip.soft{ background: color-mix(in oklab, var(--chip) 70%, transparent) }
++.chip.danger{ background: color-mix(in oklab, var(--danger) 10%, var(--chip)) }
++.chip .dot{ width:8px; height:8px; border-radius:50%; background:var(--success); box-shadow:0 0 0 4px color-mix(in oklab, var(--success) 14%, transparent) }
++
++.project .project-header{ display:grid; grid-template-columns: auto 1fr auto; gap:14px; align-items:center }
++.project .project-icon{ width:48px; height:48px; border-radius:14px; overflow:hidden; background:var(--chip); display:grid; place-items:center }
++.project .project-icon.small{ width:44px; height:44px }
++.project .project-icon img, .project .cover{ width:100%; height:100%; object-fit:cover; border-radius:12px }
++.project .project-title{ margin:0 }
++.project .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:6px }
++.tag{ background:color-mix(in oklab, var(--chip) 65%, transparent); border:1px solid color-mix(in oklab, var(--text) 10%, transparent); border-radius:999px; padding:4px 10px; font-size:12px; color:var(--muted) }
++.project .project-desc{ margin:12px 0 6px; color:var(--muted) }
++.project .project-cta{ display:flex; justify-content:flex-end }
++.project.highlight{ position:relative }
++.project.highlight::after{ content:""; position:absolute; inset:-2px; border-radius: calc(var(--radius) + 2px); padding:2px; background: linear-gradient(135deg, rgba(124,76,46,.25), rgba(192,139,97,.25)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none }
++
++.project-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px }
++.list h3{ margin: 6px 0 10px }
++.list details{ border-top:1px dashed color-mix(in oklab, var(--text) 12%, transparent); padding:10px 0 }
++.list details > summary{ cursor:pointer; list-style:none; font-weight:600 }
++.list details > summary::-webkit-details-marker{ display:none }
++
++.profile .profile-row{ display:flex; gap:12px; align-items:center }
++.profile .avatar{ width:56px; height:56px; border-radius:16px; object-fit:cover }
++.profile .muted{ color:var(--muted) }
++.profile .profile-activity{ margin-top:10px; display:grid; gap:2px }
++
++.links ul{ margin:0; padding-left:20px }
++.links a{ color:var(--primary); text-decoration:none }
++.links a:hover{ text-decoration:underline }
++
++.skills .skill, .languages .skill{ display:grid; grid-template-columns: 1fr auto; gap:6px 10px; align-items:center; margin:12px 0 }
++.skill .label{ color:var(--muted) }
++.skill .value{ font-variant-numeric: tabular-nums }
++.skill .bar{ grid-column: 1 / -1; position:relative; height:10px; background: color-mix(in oklab, var(--chip) 70%, transparent); border:1px solid color-mix(in oklab, var(--text) 10%, transparent); border-radius: 999px; overflow:hidden }
++.skill .bar::after{ content:""; position:absolute; inset:0; width:0%; background: linear-gradient(90deg, var(--primary), var(--primary-2)); box-shadow: inset 0 0 8px rgba(0,0,0,.08); border-radius:999px; transition: width 1.2s cubic-bezier(.2,.7,0,.95) }
++
++.sw .sw-tabs{ display:flex; gap:8px; margin-bottom:10px }
++.sw .sw-panel.hidden{ display:none }
++
++.site-footer{ margin:36px auto }
++.foot{ text-align:center }
++.heart{ color:var(--danger) }
++
++/* reveal animation */
++.reveal{ opacity:0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease }
++.reveal.visible{ opacity:1; transform:none }
++
++/* tilt hover */
++[data-tilt]{ transform-style: preserve-3d; will-change: transform; transition: transform .2s ease }
++[data-tilt] .tilt-raise{ transform: translateZ(10px) }
++
++/* Responsive */
++@media (max-width: 1000px){
++  .layout{ grid-template-columns: 1fr; }
++}
++@media (max-width: 680px){
++  .display{ font-size:44px }
++  .project-grid{ grid-template-columns:1fr }
++}
++
++
+EOF
+)
